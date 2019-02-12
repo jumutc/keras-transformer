@@ -62,6 +62,7 @@ def _attention_builder(name, head_num, activation, history_only, trainable=True)
             activation=activation,
             history_only=history_only,
             trainable=trainable,
+            kernel_regularizer=keras.regularizers.l2(),
             name=name,
         )(x)
     return __attention_builder
@@ -81,6 +82,7 @@ def _feed_forward_builder(name, hidden_dim, activation, trainable=True):
             units=hidden_dim,
             activation=activation,
             trainable=trainable,
+            kernel_regularizer=keras.regularizers.l2(),
             name=name,
         )(x)
     return __feed_forward_builder
